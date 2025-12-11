@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>英语单词连连看 - 一年级英语学习游戏</title>
+    <link rel="stylesheet" href="styles_game.css">
+    <meta name="description" content="一年级英语单词连连看游戏，通过卡通风格的界面和有趣的配对游戏帮助小朋友学习英语单词">
+    <meta name="keywords" content="英语学习,一年级,连连看,单词游戏,儿童教育">
+</head>
+<body>
+    <!-- 游戏容器 -->
+    <div class="game-container">
+        <!-- 欢迎界面 -->
+        <div id="welcome-screen" class="screen">
+            <div class="welcome-content">
+                <h1 class="game-title">🐰 英语单词连连看 🐰</h1>
+                <p class="game-subtitle">一年级英语学习冒险</p>
+                <div class="adventure-theme">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%238B4513'/%3E%3Ccircle cx='100' cy='80' r='30' fill='%23A0522D'/%3E%3Crect x='85' y='110' width='30' height='40' fill='%23CD853F'/%3E%3Crect x='70' y='150' width='60' height='20' fill='%23DEB887'/%3E%3Crect x='95' y='50' width='10' height='30' fill='%23A0522D'/%3E%3Ccircle cx='90' cy='70' r='5' fill='%23000'/%3E%3Ccircle cx='110' cy='70' r='5' fill='%23000'/%3E%3Cpath d='M90 90 Q100 95 110 90' stroke='%23000' stroke-width='2' fill='none'/%3E%3C/svg%3E" alt="冒险主题" class="theme-icon">
+                    <p>跟着小兔子一起踏上英语学习冒险之旅吧！</p>
+                </div>
+                <button id="start-btn" class="btn-primary">开始游戏</button>
+            </div>
+        </div>
+
+        <!-- 单词选择界面 -->
+        <div id="word-select-screen" class="screen hidden">
+            <div class="select-content">
+                <h2 class="screen-title">📚 选择单词主题</h2>
+                <div class="theme-grid">
+                    <div class="theme-card" data-theme="animals">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='30' r='15' fill='%23FFC0CB'/%3E%3Ccircle cx='45' cy='25' r='3' fill='%23000'/%3E%3Ccircle cx='55' cy='25' r='3' fill='%23000'/%3E%3Cpath d='M40 35 Q50 45 60 35' stroke='%23000' stroke-width='2' fill='none'/%3E%3Crect x='35' y='45' width='30' height='25' rx='5' fill='%23FFC0CB'/%3E%3Cpath d='M30 55 L35 50 M70 55 L65 50' stroke='%23000' stroke-width='2'/%3E%3Ccircle cx='40' cy='80' r='10' fill='%23FFC0CB'/%3E%3Ccircle cx='60' cy='80' r='10' fill='%23FFC0CB'/%3E%3C/svg%3E" alt="动物" class="theme-image">
+                        <h3>动物王国</h3>
+                        <p>学习动物名称</p>
+                    </div>
+                    <div class="theme-card" data-theme="fruits">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='30' fill='%23FF0000'/%3E%3Cpath d='M50 20 Q30 30 35 50 Q30 70 50 80 Q70 70 65 50 Q70 30 50 20' fill='%23006400'/%3E%3Ccircle cx='40' cy='40' r='5' fill='%23FFA500'/%3E%3Ccircle cx='60' cy='55' r='4' fill='%23FFA500'/%3E%3Ccircle cx='45' cy='60' r='3' fill='%23FFA500'/%3E%3C/svg%3E" alt="水果" class="theme-image">
+                        <h3>美味水果</h3>
+                        <p>学习水果名称</p>
+                    </div>
+                    <div class="theme-card" data-theme="colors">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect x='10' y='10' width='80' height='20' fill='%23FF0000'/%3E%3Crect x='10' y='35' width='80' height='20' fill='%23FFA500'/%3E%3Crect x='10' y='60' width='80' height='20' fill='%23FFFF00'/%3E%3C/svg%3E" alt="颜色" class="theme-image">
+                        <h3>多彩颜色</h3>
+                        <p>学习颜色名称</p>
+                    </div>
+                    <div class="theme-card" data-theme="numbers">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect x='20' y='20' width='20' height='60' fill='%230000FF'/%3E%3Crect x='60' y='20' width='20' height='60' fill='%230000FF'/%3E%3Ctext x='30' y='60' font-size='40' fill='%23FFF' text-anchor='middle'%3E1%3C/text%3E%3Ctext x='70' y='60' font-size='40' fill='%23FFF' text-anchor='middle'%3E2%3C/text%3E%3C/svg%3E" alt="数字" class="theme-image">
+                        <h3>数字王国</h3>
+                        <p>学习数字名称</p>
+                    </div>
+                </div>
+                <button id="back-to-welcome" class="btn-secondary">返回</button>
+            </div>
+        </div>
+
+        <!-- 游戏主界面 -->
+        <div id="game-screen" class="screen hidden">
+            <!-- 游戏头部 -->
+            <header class="game-header">
+                <div class="game-info">
+                    <div class="score-display">
+                        <span class="info-label">得分:</span>
+                        <span id="score" class="info-value">0</span>
+                    </div>
+                    <div class="level-display">
+                        <span class="info-label">关卡:</span>
+                        <span id="level" class="info-value">1</span>
+                    </div>
+                </div>
+                <h2 class="game-title-small">英语单词连连看</h2>
+                <div class="game-controls">
+                    <button id="restart-btn" class="btn-secondary">重新开始</button>
+                    <button id="back-to-select" class="btn-secondary">更换主题</button>
+                </div>
+            </header>
+
+            <!-- 游戏主体 -->
+            <main class="game-main">
+                <!-- 左边：英文单词 -->
+                <div class="word-panel">
+                    <h3 class="panel-title">📖 英文单词</h3>
+                    <div id="word-list" class="word-list">
+                        <!-- 单词卡片将通过JavaScript动态生成 -->
+                    </div>
+                </div>
+
+                <!-- 中间：连接线区域 -->
+                <div class="connection-area">
+                    <!-- 连接线将通过JavaScript动态生成 -->
+                </div>
+
+                <!-- 右边：图片和中文 -->
+                <div class="image-panel">
+                    <h3 class="panel-title">🖼️ 图片和中文</h3>
+                    <div id="image-list" class="image-list">
+                        <!-- 图片卡片将通过JavaScript动态生成 -->
+                    </div>
+                </div>
+            </main>
+
+            <!-- 游戏底部 -->
+            <footer class="game-footer">
+                <div id="game-status" class="game-status">
+                    点击左边的英文单词，再点击右边对应的图片和中文含义！
+                </div>
+                <div id="success-message" class="success-message hidden">
+                    ✅ 配对正确！太棒了！
+                </div>
+            </footer>
+        </div>
+
+        <!-- 游戏结束界面 -->
+        <div id="game-over-screen" class="screen hidden">
+            <div class="game-over-content">
+                <h2 class="screen-title">🎉 游戏完成！</h2>
+                <div class="final-score">
+                    <p>你的最终得分：</p>
+                    <p id="final-score" class="score-value">0</p>
+                </div>
+                <div class="game-stats">
+                    <p>完成关卡：<span id="final-level">1</span></p>
+                    <p>正确配对：<span id="correct-pairs">0</span>/<span id="total-pairs">0</span></p>
+                </div>
+                <div class="reward-section">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150'%3E%3Ccircle cx='75' cy='75' r='60' fill='%23FFD700'/%3E%3Cpath d='M75 30 L90 60 L125 65 L100 90 L105 125 L75 110 L45 125 L50 90 L25 65 L60 60 Z' fill='%23FFA500'/%3E%3C/svg%3E" alt="奖励" class="reward-icon">
+                    <p>你获得了英语小勇士勋章！</p>
+                </div>
+                <div class="game-over-buttons">
+                    <button id="play-again-btn" class="btn-primary">再玩一次</button>
+                    <button id="change-theme-btn" class="btn-secondary">更换主题</button>
+                    <button id="back-to-welcome-end" class="btn-secondary">返回首页</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 引入游戏逻辑 -->
+    <script src="app_game.js"></script>
+</body>
+</html>
